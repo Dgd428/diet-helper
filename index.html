@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="饮食助手">
 <meta name="theme-color" content="#7c6fcf">
-<link rel="manifest" href="data:application/json,{%22name%22:%22%E9%A5%AE%E9%A3%9F%E5%8A%A9%E6%89%8B%22,%22short_name%22:%22%E9%A5%AE%E9%A3%9F%E5%8A%A9%E6%89%8B%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23fbf7f3%22,%22theme_color%22:%22%237c6fcf%22,%22orientation%22:%22portrait%22,%22icons%22:[{%22src%22:%22icon.svg%22,%22sizes%22:%22any%22,%22type%22:%22image/svg+xml%22}]}">
+<link rel="manifest" href="data:application/json,{%22name%22:%22%E9%A5%AE%E9%A3%9F%E5%8A%A9%E6%89%8B%22,%22short_name%22:%22%E9%A5%AE%E9%A3%9F%E5%8A%A9%E6%89%8B%22,%22start_url%22:%22./?v=3%22,%22display%22:%22standalone%22,%22background_color%22:%22%23fbf7f3%22,%22theme_color%22:%22%237c6fcf%22,%22orientation%22:%22portrait%22,%22icons%22:[{%22src%22:%22icon.svg%22,%22sizes%22:%22any%22,%22type%22:%22image/svg+xml%22}]}">
 <title>饮食助手</title>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <style>
@@ -1227,24 +1227,7 @@ function renderAll() {
   }
 
   renderMealsContent(content, period, todayMeals);
-  fixMobileLayout();
 }
-
-function fixMobileLayout() {
-  if (window.innerWidth > 640) return;
-  document.querySelectorAll('.cards-row').forEach(row => {
-    row.setAttribute('style', 'display:grid !important;grid-template-columns:1fr !important;gap:12px !important;width:100% !important;');
-  });
-  document.querySelectorAll('.person-card').forEach(card => {
-    card.setAttribute('style', 'width:100% !important;min-width:100% !important;');
-  });
-}
-
-// Watch DOM for late changes
-if (window.MutationObserver) {
-  new MutationObserver(() => fixMobileLayout()).observe(document.body, { childList: true, subtree: true });
-}
-window.addEventListener('resize', fixMobileLayout);
 
 function renderMealsContent(content, period, todayMeals) {
   const currentMeal = period === 'breakfast' ? '早餐' : period === 'lunch' ? '午餐' : '晚餐';
@@ -1299,9 +1282,6 @@ function renderMealsContent(content, period, todayMeals) {
   ];
 
   html += `<div class="meal-section">
-    <style>
-      @media(max-width:640px){.cards-row{grid-template-columns:1fr!important;gap:12px!important}.person-card{width:100%!important}}
-    </style>
     <div class="cards-row">`;
 
   for (const member of members) {
