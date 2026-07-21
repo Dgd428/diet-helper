@@ -577,7 +577,7 @@ body {
 
 @media screen and (max-width: 640px) {
   * { -webkit-tap-highlight-color: transparent; }
-  html { font-size: 15px; }
+  html { font-size: 17px; }
 
   body {
     display: block !important; padding: 0 !important; margin: 0 !important;
@@ -592,76 +592,105 @@ body {
     align-items: flex-start !important; justify-content: space-between !important;
     position: relative !important; flex-wrap: nowrap !important;
   }
-  .status-bar .left-group { flex: 1 !important; min-width: 0 !important; text-align: left !important; margin-right: 0 !important; }
-  .status-bar .time { font-size: 24px !important; line-height: 1.1 !important; text-align: left !important; }
-  .status-bar .date { font-size: 12px !important; margin-top: 2px !important; text-align: left !important; letter-spacing: 0.5px !important; }
+  .status-bar .left-group { flex: 1 !important; min-width: 0 !important; text-align: left !important; }
+  .status-bar .time { font-size: 28px !important; line-height: 1.1 !important; text-align: left !important; }
+  .status-bar .date { font-size: 14px !important; margin-top: 2px !important; text-align: left !important; }
   .status-bar .period-tag {
-    font-size: 12px !important; padding: 6px 14px !important; border-radius: 14px !important;
-    font-weight: 600 !important; letter-spacing: 0 !important;
-    position: static !important; left: auto !important; top: auto !important;
+    font-size: 15px !important; padding: 8px 18px !important; border-radius: 18px !important;
+    font-weight: 600 !important; position: static !important; left: auto !important; top: auto !important;
     transform: none !important; flex-shrink: 0 !important; align-self: center !important;
+    margin-right: 32px !important;
   }
   .cart-icon {
     position: absolute !important; right: 14px !important; top: 50% !important;
-    transform: translateY(-50%) !important; font-size: 17px !important;
+    transform: translateY(-50%) !important; font-size: 20px !important;
   }
 
   /* ===== Greeting ===== */
   .main-content { padding: 4px 14px 160px 14px !important; }
-  .greeting { font-size: 20px !important; margin: 2px 0 4px !important; }
-  .greeting-sub { font-size: 13px !important; }
+  .greeting { font-size: 22px !important; margin: 2px 0 4px !important; }
+  .greeting-sub { font-size: 15px !important; }
 
   /* ===== Cards ===== */
-  .cards-row { display: grid !important; grid-template-columns: 1fr !important; gap: 12px !important; }
+  .cards-row { display: grid !important; grid-template-columns: 1fr !important; gap: 14px !important; }
   .person-card { min-width: 100% !important; width: 100% !important; }
-  .dish-row .dish-name { font-size: 14px !important; }
-  .dish-row { padding: 6px 0 !important; }
+  .dish-row .dish-name { font-size: 15px !important; }
+  .dish-row { padding: 7px 0 !important; }
 
   /* ===== Modals ===== */
-  .modal-sheet, .settings-panel { max-width: 100% !important; margin: 8px !important; border-radius: 18px !important; padding: 18px 14px 32px !important; max-height: 85dvh !important; }
+  .modal-sheet, .settings-panel { max-width: 100% !important; margin: 8px !important; border-radius: 18px !important; padding: 20px 16px 32px !important; max-height: 85dvh !important; }
   .settings-tabs { gap: 2px !important; }
-  .settings-tab { font-size: 11px !important; padding: 7px 4px !important; }
+  .settings-tab { font-size: 12px !important; padding: 8px 6px !important; }
 
   .all-day-cards { grid-template-columns: 1fr !important; }
   .all-day-sheet { max-width: 100% !important; margin: 8px !important; padding: 18px 14px 28px !important; }
 
-  .week-grid { grid-template-columns: repeat(7, 1fr) !important; gap: 2px !important; font-size: 8px !important; }
+  .week-grid { grid-template-columns: repeat(7, 1fr) !important; gap: 2px !important; font-size: 9px !important; }
   .week-day { padding: 4px 2px !important; }
-  .week-day-header { font-size: 8px !important; }
-  .week-meal-row { font-size: 7px !important; margin: 2px 0 !important; }
+  .week-day-header { font-size: 9px !important; }
+  .week-meal-row { font-size: 8px !important; margin: 2px 0 !important; }
 
-  /* ===== FABs & Search =====
-     Layout: search bubble on top row, FABs bottom row, no overlap */
+  /* ===== Search Bubble ===== */
   .ing-search-bubble {
-    bottom: 100px !important; left: 50% !important; transform: translateX(-50%) !important;
-    width: auto !important; max-width: 85vw !important; padding: 6px 14px !important;
-    position: fixed !important;
+    bottom: 120px !important; left: 50% !important; transform: translateX(-50%) !important;
+    width: auto !important; max-width: 72vw !important;
+    padding: 10px 18px !important; border-radius: 24px !important;
+    position: fixed !important; background: var(--card) !important;
+    box-shadow: 0 4px 20px rgba(100,80,160,0.1) !important;
   }
-  .ing-bubble-input { font-size: 13px !important; width: 160px !important; }
+  .ing-bubble-input { font-size: 15px !important; width: 140px !important; }
 
-  .all-day-fab, .week-fab, .settings-fab {
-    width: 40px !important; height: 40px !important; bottom: 50px !important;
-    position: fixed !important;
+  /* ===== FAB: Collapsible vertical stack ===== */
+  .settings-fab, .week-fab, .all-day-fab {
+    width: 44px !important; height: 44px !important;
+    position: fixed !important; right: 16px !important;
+    transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1) !important;
+    opacity: 0 !important; transform: scale(0.5) !important; pointer-events: none !important;
   }
-  .all-day-fab { right: 130px !important; }
-  .week-fab { right: 76px !important; }
-  .settings-fab { right: 22px !important; }
+  .settings-fab { bottom: 50px !important; }
+  .week-fab { bottom: 102px !important; }
+  .all-day-fab { bottom: 154px !important; }
+
+  .fab-menu-open .settings-fab,
+  .fab-menu-open .week-fab,
+  .fab-menu-open .all-day-fab {
+    opacity: 1 !important; transform: scale(1) !important; pointer-events: auto !important;
+  }
+
+  /* Single trigger button */
+  .fab-trigger {
+    display: flex !important;
+    width: 48px !important; height: 48px !important;
+    position: fixed !important; bottom: 50px !important; right: 14px !important; z-index: 30 !important;
+    border-radius: 50% !important; background: var(--card) !important;
+    border: 0.5px solid var(--border) !important; box-shadow: 0 4px 20px rgba(100,80,160,0.12) !important;
+    align-items: center !important; justify-content: center !important;
+    font-size: 20px !important; cursor: pointer !important;
+    transition: transform 0.3s !important;
+  }
+  .fab-menu-open .fab-trigger { transform: rotate(45deg) !important; }
 
   /* ===== Ingredient library ===== */
   .ing-sheet { max-width: 100% !important; margin: 8px !important; border-radius: 18px !important; padding: 16px 12px 22px !important; }
-  .ing-lib-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important; gap: 4px !important; }
-  .ing-lib-item { font-size: 12px !important; padding: 7px 8px !important; }
+  .ing-lib-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important; gap: 5px !important; }
+  .ing-lib-item { font-size: 13px !important; padding: 8px 10px !important; }
 
   /* ===== Shop ===== */
-  .shop-sheet { margin: 50px 10px 0 auto !important; max-width: 280px !important; padding: 16px 14px 20px !important; font-size: 13px !important; }
+  .shop-sheet { margin: 50px 10px 0 auto !important; max-width: 280px !important; padding: 16px 14px 20px !important; font-size: 14px !important; }
 
   /* ===== Settings ===== */
-  .settings-row label { font-size: 13px !important; }
-  .settings-group h3 { font-size: 13px !important; }
-  .modal-step { font-size: 13px !important; }
-  .modal-ingredients { font-size: 12px !important; }
-  .shopping-category h4 { font-size: 13px !important; }
-  .shopping-item { font-size: 13px !important; }
+  .settings-row label { font-size: 14px !important; }
+  .settings-group h3 { font-size: 14px !important; }
+  .modal-step { font-size: 14px !important; }
+  .modal-ingredients { font-size: 13px !important; }
+  .shopping-category h4 { font-size: 14px !important; }
+  .shopping-item { font-size: 14px !important; }
+}
+
+/* Mobile FAB trigger - hidden on desktop */
+.fab-trigger { display: none; }
+@media screen and (max-width: 640px) {
+  .fab-trigger { display: flex !important; }
 }
 </style>
 </head>
@@ -698,6 +727,10 @@ body {
     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
   </svg>
 </button>
+
+<!-- Mobile FAB trigger -->
+<button class="fab-trigger" onclick="toggleFabMenu()" title="更多">+</button>
+<div id="fabOverlay" style="display:none;position:fixed;inset:0;z-index:1;" onclick="toggleFabMenu()"></div>
 
 <!-- Main Content -->
 <div class="main-content" id="mainContent"></div>
@@ -1361,6 +1394,7 @@ function renderMealsContent(content, period, todayMeals) {
 
 // ===== All-Day Preview Modal =====
 function openAllDay() {
+  closeFabMenu();
   const todayMeals = getTodayMeals();
   if (!todayMeals) return;
 
@@ -1447,6 +1481,7 @@ function filterIngLibrary() {
 
 // ===== Week View =====
 function openWeekView() {
+  closeFabMenu();
   const overlay = document.getElementById('allDayOverlay');
   const sheet = document.getElementById('allDaySheet');
 
@@ -1730,7 +1765,21 @@ function confirmShopping() {
 // ============================================================
 // 设置面板
 // ============================================================
+// ===== Mobile Fab Menu =====
+let fabOpen = false;
+function toggleFabMenu() {
+  fabOpen = !fabOpen;
+  document.body.classList.toggle('fab-menu-open', fabOpen);
+  document.getElementById('fabOverlay').style.display = fabOpen ? 'block' : 'none';
+}
+function closeFabMenu() {
+  fabOpen = false;
+  document.body.classList.remove('fab-menu-open');
+  document.getElementById('fabOverlay').style.display = 'none';
+}
+
 function openSettings() {
+  closeFabMenu();
   const overlay = document.getElementById('settingsOverlay');
   const panel = document.getElementById('settingsPanel');
   const tw = getTimeWindows();
