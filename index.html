@@ -2,12 +2,13 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="饮食助手">
-<link rel="apple-touch-icon" href="icon.svg">
+<meta name="theme-color" content="#7c6fcf">
+<link rel="manifest" href="data:application/json,{%22name%22:%22%E9%A5%AE%E9%A3%9F%E5%8A%A9%E6%89%8B%22,%22short_name%22:%22%E9%A5%AE%E9%A3%9F%E5%8A%A9%E6%89%8B%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23fbf7f3%22,%22theme_color%22:%22%237c6fcf%22,%22orientation%22:%22portrait%22,%22icons%22:[{%22src%22:%22icon.svg%22,%22sizes%22:%22any%22,%22type%22:%22image/svg+xml%22}]}">
 <title>饮食助手</title>
 <style>
 :root {
@@ -573,11 +574,65 @@ body {
 .fasting-screen p { font-size: 15px; color: var(--fasting-accent); }
 .fasting-screen .countdown { font-size: 16px; margin-top: 14px; color: var(--fasting-accent); }
 
-@media (max-width: 420px) {
-  .status-bar .time { font-size: 28px; }
-  .main-content { padding: 0 12px 120px; }
-  .dish-row .dish-name { font-size: 15px; }
-  .modal-sheet { padding: 22px 18px 40px; }
+@media screen and (max-width: 640px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  html { font-size: 15px; }
+  body {
+    font-size: 15px; min-height: auto; min-height: 100dvh;
+    display: block !important;
+    padding: env(safe-area-inset-top, 16px) 0 0 0 !important;
+    margin: 0 !important;
+    width: 100vw !important; max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  .status-bar { padding: 12px 16px 8px !important; display: flex !important; }
+  .status-bar .time { font-size: 24px !important; }
+  .status-bar .date { font-size: 13px !important; }
+  .period-tag { font-size: 12px !important; padding: 4px 10px !important; }
+  .cart-icon { right: 88px !important; font-size: 16px !important; }
+  .main-content { padding: 0 14px 120px 14px !important; }
+  .greeting { font-size: 20px !important; }
+  .greeting-sub { font-size: 13px !important; }
+
+  .cards-row { flex-direction: column !important; gap: 12px !important; }
+  .person-card { min-width: 100% !important; width: 100% !important; }
+  .dish-row .dish-name { font-size: 14px !important; }
+  .dish-row { padding: 6px 0 !important; }
+
+  .modal-sheet { max-width: 100% !important; margin: 8px !important; border-radius: 18px 18px 0 0 !important; padding: 18px 14px 32px !important; max-height: 85dvh !important; }
+  .settings-panel { max-width: 100% !important; margin: 8px !important; border-radius: 18px 18px 0 0 !important; padding: 20px 16px 28px !important; }
+  .settings-tabs { gap: 2px !important; }
+  .settings-tab { font-size: 11px !important; padding: 7px 4px !important; }
+
+  .all-day-cards { grid-template-columns: 1fr !important; }
+  .all-day-sheet { max-width: 100% !important; margin: 8px !important; padding: 18px 14px 28px !important; }
+
+  .week-grid { grid-template-columns: repeat(7, 1fr) !important; gap: 2px !important; font-size: 8px !important; }
+  .week-day { padding: 4px 2px !important; }
+  .week-day-header { font-size: 8px !important; }
+  .week-meal-row { font-size: 7px !important; margin: 2px 0 !important; }
+
+  .all-day-fab, .week-fab { width: 40px !important; height: 40px !important; bottom: 80px !important; }
+  .settings-fab { width: 40px !important; height: 40px !important; bottom: 80px !important; }
+  .all-day-fab { right: 124px !important; }
+  .week-fab { right: 70px !important; }
+  .settings-fab { right: 16px !important; }
+
+  .ing-search-bubble { width: 200px !important; bottom: 16px !important; padding: 6px 12px !important; }
+  .ing-bubble-input { font-size: 13px !important; }
+
+  .ing-sheet { max-width: 100% !important; margin: 8px !important; border-radius: 18px !important; padding: 16px 12px 22px !important; }
+  .ing-lib-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important; gap: 4px !important; }
+  .ing-lib-item { font-size: 12px !important; padding: 7px 8px !important; }
+
+  .shop-sheet { margin: 50px 10px 0 auto !important; max-width: 280px !important; padding: 16px 14px 20px !important; font-size: 13px !important; }
+
+  .settings-row label { font-size: 13px !important; }
+  .settings-group h3 { font-size: 13px !important; }
+  .modal-step { font-size: 13px !important; }
+  .modal-ingredients { font-size: 12px !important; }
+  .shopping-category h4 { font-size: 13px !important; }
+  .shopping-item { font-size: 13px !important; }
 }
 </style>
 </head>
@@ -664,82 +719,114 @@ function debug(msg, obj) {
 }
 
 // ============================================================
-// 同步层：GitHub Gist 云端同步
+// 云同步：GitHub Gist（按 gist-cloud-sync skill 标准实现）
 // ============================================================
-let syncEnabled = false;
-let gistId = '';
-let ghToken = '';
+let _syncPending = false;
+let _syncQueued = false;
+let _lastPushTime = 0;
 
-async function initSync() {
-  // Load stored token/gist from settings
-  gistId = syncGet('github_gist_id', '');
-  ghToken = syncGet('github_token', '');
-  if (!gistId || !ghToken) {
-    debug('GitHub 未配置，离线模式');
-    syncEnabled = false;
-    return;
-  }
-  try {
-    const res = await fetch(`https://api.github.com/gists/${gistId}`, {
-      headers: { 'Authorization': `token ${ghToken}`, 'Accept': 'application/vnd.github.v3+json' }
-    });
-    if (!res.ok) throw new Error('gist fetch failed');
-    const gist = await res.json();
-    const file = gist.files?.['diet-data.json'];
-    if (file && file.content) {
-      const data = JSON.parse(file.content);
-      for (const [key, val] of Object.entries(data)) {
-        localStorage.setItem(key, JSON.stringify(val));
-      }
-      debug('云端数据已同步');
-    }
-    syncEnabled = true;
-  } catch(e) {
-    syncEnabled = false;
-    debug('同步失败，离线模式', e.message);
-  }
+function getSyncInfo() {
+  return {
+    token: syncGet('github_token', ''),
+    gistId: syncGet('github_gist_id', '')
+  };
 }
 
-let syncTimer = null;
+function saveSyncInfo(token, gistId) {
+  localStorage.setItem('github_token', JSON.stringify(token));
+  localStorage.setItem('github_gist_id', JSON.stringify(gistId));
+}
 
 function syncGet(key, fallback) {
+  try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fallback; }
+  catch(e) { return fallback; }
+}
+
+async function syncToGist() {
+  const { token, gistId } = getSyncInfo();
+  if (!token || !gistId) return false;
+  if (!navigator.onLine) return false;
+  if (_syncPending) { _syncQueued = true; return false; }
+  _syncPending = true; _syncQueued = false;
+
+  const allData = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k.startsWith('diet_helper') || k.startsWith('shop_')) {
+      allData[k] = localStorage.getItem(k);
+    }
+  }
+
   try {
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
-  } catch(e) { return fallback; }
+    const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github+json'
+      },
+      body: JSON.stringify({
+        files: { 'diet-data.json': { content: JSON.stringify(allData) } }
+      })
+    });
+    if (!res.ok) { _syncPending = false; _syncQueued = false; return false; }
+    _lastPushTime = Date.now();
+    _syncPending = false;
+    if (_syncQueued) { _syncQueued = false; syncToGist(); }
+    return true;
+  } catch(e) { _syncPending = false; _syncQueued = false; return false; }
 }
 
-function syncPush() {
-  if (!syncEnabled || !gistId || !ghToken) return;
-  clearTimeout(syncTimer);
-  syncTimer = setTimeout(async () => {
-    try {
-      const all = {};
-      for (let i = 0; i < localStorage.length; i++) {
-        const k = localStorage.key(i);
-        try { all[k] = JSON.parse(localStorage.getItem(k)); }
-        catch(e) { all[k] = localStorage.getItem(k); }
-      }
-      await fetch(`https://api.github.com/gists/${gistId}`, {
-        method: 'PATCH',
-        headers: { 'Authorization': `token ${ghToken}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ files: { 'diet-data.json': { content: JSON.stringify(all) } } })
-      });
-    } catch(e) { /* silent */ }
-  }, 800);
+async function syncFromGist() {
+  const { token, gistId } = getSyncInfo();
+  if (!token || !gistId) return false;
+  try {
+    const r = await fetch(`https://api.github.com/gists/${gistId}`, {
+      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' }
+    });
+    if (!r.ok) return false;
+    const gist = await r.json();
+    const file = gist.files && gist.files['diet-data.json'];
+    if (!file || !file.content) return false;
+    const gistTime = new Date(gist.updated_at).getTime();
+    if (_lastPushTime && gistTime <= _lastPushTime) return false;
+    const allData = JSON.parse(file.content);
+    const saveTok = syncGet('github_token', '');
+    const saveGist = syncGet('github_gist_id', '');
+    Object.keys(allData).forEach(k => localStorage.setItem(k, allData[k]));
+    if (saveTok) localStorage.setItem('github_token', JSON.stringify(saveTok));
+    if (saveGist) localStorage.setItem('github_gist_id', JSON.stringify(saveGist));
+    _lastPushTime = Math.max(_lastPushTime, gistTime);
+    return true;
+  } catch(e) { return false; }
 }
 
-// Monkey-patch localStorage to auto-sync writes
+let _syncDebounce = null;
+function autoSync() {
+  if (!getSyncInfo().token) return;
+  clearTimeout(_syncDebounce);
+  _syncDebounce = setTimeout(() => syncToGist(), 500);
+}
+
+// Override Storage.setItem to auto-sync diet/shop keys
 const _origSetItem = Storage.prototype.setItem;
 const _origRemoveItem = Storage.prototype.removeItem;
 Storage.prototype.setItem = function(key, value) {
   _origSetItem.call(this, key, value);
-  if (key.startsWith('diet_helper') || key.startsWith('shop_') || key.startsWith('github_')) syncPush();
+  if (key.startsWith('diet_helper') || key.startsWith('shop_')) autoSync();
 };
 Storage.prototype.removeItem = function(key) {
   _origRemoveItem.call(this, key);
-  if (key.startsWith('diet_helper') || key.startsWith('shop_')) syncPush();
+  if (key.startsWith('diet_helper') || key.startsWith('shop_')) autoSync();
 };
+
+// Poll + focus + online events
+setInterval(() => { if (getSyncInfo().token && navigator.onLine) syncFromGist(); }, 60000);
+window.addEventListener('focus', () => { if (getSyncInfo().token && navigator.onLine) syncFromGist(); });
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && getSyncInfo().token && navigator.onLine) syncFromGist();
+});
+window.addEventListener('online', () => { if (getSyncInfo().token) { syncFromGist(); syncToGist(); } });
 
 // ============================================================
 // 数据加载
@@ -751,7 +838,6 @@ let selectedDate = new Date().toISOString().slice(0,10);
 
 async function init() {
   debug('开始初始化...');
-  await initSync(); // Pull server data first
   try {
     const [d, r, i] = await Promise.all([
       fetch('data/dishes.json').then(r => r.json()),
@@ -782,6 +868,8 @@ async function init() {
 
   generateIfNeeded(STORAGE_VERSION);
   startClock();
+  // Pull cloud data on startup (if configured)
+  if (getSyncInfo().token) { setTimeout(() => { syncFromGist().then(() => renderAll()); }, 300); }
   renderAll();
 
   const period = getCurrentPeriod();
@@ -1670,14 +1758,16 @@ function openSettings() {
   html += `</div></div>`;
 
   // Tab: 同步
+  const savedToken = syncGet('github_token', '');
+  const savedGist = syncGet('github_gist_id', '');
   html += `<div class="settings-tab-content" id="stab_sync">`;
-  html += row('Token', `<input type="password" id="set_ghToken" value="${syncGet('github_token','')}" placeholder="ghp_xxx...">`);
-  html += row('Gist ID', `<input type="text" id="set_ghGist" value="${syncGet('github_gist_id','')}" placeholder="32位哈希">`);
-  html += `<div style="font-size:13px;color:var(--hint);margin:10px 0;line-height:1.6;">
-    1. 创建 <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--purple);">GitHub Token</a>，勾选 gist 权限<br>
-    2. 创建新 Gist（私密），URL 末尾就是 Gist ID<br>
-    3. 填好后保存 → 多设备自动同步
+  html += row('Token', `<input type="password" id="set_ghToken" value="${savedToken}" placeholder="github_pat_...">`);
+  html += row('Gist ID', `<input type="text" id="set_ghGist" value="${savedGist}" placeholder="自动创建后自动填入">`);
+  html += `<div style="display:flex;gap:8px;margin:12px 0;">
+    <button class="settings-save" onclick="createGistFromSettings()" style="flex:1;font-size:13px;">自动创建 Gist</button>
+    <button class="settings-close" onclick="testSyncStatus()" style="border:1px solid var(--border);background:var(--card);padding:10px;border-radius:8px;font-size:12px;cursor:pointer;">测试同步</button>
   </div>`;
+  html += `<div style="font-size:12px;color:var(--hint);line-height:1.5;" id="syncStatusMsg">${savedToken && savedGist ? '已配置' : '1. 粘贴 Token → 点自动创建 Gist → 完成'}</div>`;
   html += `</div>`;
 
   html += `<div class="settings-buttons">
@@ -1720,6 +1810,40 @@ function closeSettings(e) {
   qClose('settingsOverlay');
 }
 
+// ============================================================
+// 设置面板 - 同步
+// ============================================================
+async function createGistFromSettings() {
+  const token = document.getElementById('set_ghToken')?.value.trim();
+  if (!token) { alert('请先粘贴 GitHub Token'); return; }
+  const status = document.getElementById('syncStatusMsg');
+  if (status) status.textContent = '正在创建...';
+  try {
+    const r = await fetch('https://api.github.com/gists', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' },
+      body: JSON.stringify({ description: '饮食助手数据', public: false, files: { 'diet-data.json': { content: '{}' } } })
+    });
+    if (!r.ok) { const err = await r.text(); if (status) status.textContent = '创建失败：' + err.slice(0,50); return; }
+    const gist = await r.json();
+    saveSyncInfo(token, gist.id);
+    document.getElementById('set_ghGist').value = gist.id;
+    if (status) status.textContent = 'Gist 已创建，同步中...';
+    await syncToGist();
+    if (status) status.textContent = '同步完成！多设备数据已互通';
+    saveSettingsFromPanel(); // Also save other settings
+  } catch(e) { if (status) status.textContent = '网络错误：' + e.message; }
+}
+
+async function testSyncStatus() {
+  const { token, gistId } = getSyncInfo();
+  const status = document.getElementById('syncStatusMsg');
+  if (!token || !gistId) { if (status) status.textContent = '请先配置 Token 和 Gist ID'; return; }
+  if (status) status.textContent = '测试中...';
+  const ok = await syncToGist();
+  if (status) status.textContent = ok ? '同步正常' : '同步失败，检查 Token 和网络';
+}
+
 function saveSettingsFromPanel() {
   settings.member1Name = document.getElementById('set_m1name')?.value || settings.member1Name;
   settings.member1Type = document.getElementById('set_m1type')?.value || settings.member1Type;
@@ -1755,11 +1879,10 @@ function saveSettingsFromPanel() {
   if (calNL && calNL.includes('-')) settings.calRange_normal_lunch = calNL;
   if (calND && calND.includes('-')) settings.calRange_normal_dinner = calND;
 
-  // GitHub sync
-  const ghTok = document.getElementById('set_ghToken')?.value;
-  const ghGist = document.getElementById('set_ghGist')?.value;
-  if (ghTok) localStorage.setItem('github_token', JSON.stringify(ghTok));
-  if (ghGist) localStorage.setItem('github_gist_id', JSON.stringify(ghGist));
+  // Sync: if user manually entered token+gist and clicked save, store them
+  const ghTok = document.getElementById('set_ghToken')?.value.trim();
+  const ghGist = document.getElementById('set_ghGist')?.value.trim();
+  if (ghTok && ghGist) saveSyncInfo(ghTok, ghGist);
 
   saveSettings();
   closeSettings();
@@ -1791,7 +1914,28 @@ init();
 
 <script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  const swCode = [
+    'const CACHE = "diet-v' + Date.now() + '";',
+    'self.addEventListener("install", e => e.waitUntil(self.skipWaiting()));',
+    'self.addEventListener("activate", e => {',
+    '  e.waitUntil(caches.keys().then(ks =>',
+    '    Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))',
+    '  ));',
+    '  e.waitUntil(self.clients.claim());',
+    '});',
+    'self.addEventListener("fetch", e =>',
+    '  e.respondWith(',
+    '    fetch(e.request).then(res => {',
+    '      let r2 = res.clone();',
+    '      caches.open(CACHE).then(c => c.put(e.request, r2));',
+    '      return res;',
+    '    }).catch(() => caches.match(e.request))',
+    '  )',
+    ');'
+  ].join('');
+  navigator.serviceWorker.register(
+    URL.createObjectURL(new Blob([swCode], { type: 'application/javascript' }))
+  );
 }
 </script>
 </body>
