@@ -585,13 +585,21 @@ body {
     width: 100vw !important; max-width: 100vw !important;
     overflow-x: hidden !important;
   }
-  .status-bar { padding: 12px 16px 8px !important; display: flex !important; }
-  .status-bar .time { font-size: 24px !important; }
-  .status-bar .date { font-size: 13px !important; }
-  .period-tag { font-size: 12px !important; padding: 4px 10px !important; }
-  .cart-icon { right: 88px !important; font-size: 16px !important; }
-  .main-content { padding: 0 14px 120px 14px !important; }
-  .greeting { font-size: 20px !important; }
+
+  /* Status bar - clean horizontal layout */
+  .status-bar { padding: 12px 16px 10px !important; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 8px !important; }
+  .status-bar .left-group { flex: 1 !important; min-width: 0 !important; }
+  .status-bar .time { font-size: 22px !important; line-height: 1.1 !important; }
+  .status-bar .date { font-size: 12px !important; line-height: 1.2 !important; }
+  .status-bar .period-tag {
+    font-size: 12px !important; padding: 5px 12px !important; border-radius: 14px !important;
+    font-weight: 500 !important; letter-spacing: 0 !important;
+    position: static !important; transform: none !important; left: auto !important;
+    flex-shrink: 0 !important; max-width: 45% !important; white-space: nowrap !important;
+  }
+  .cart-icon { right: 16px !important; top: 50% !important; transform: translateY(-50%) !important; font-size: 16px !important; flex-shrink: 0 !important; position: absolute !important; }
+  .main-content { padding: 8px 14px 120px 14px !important; }
+  .greeting { font-size: 20px !important; margin-top: 8px !important; }
   .greeting-sub { font-size: 13px !important; }
 
   .cards-row { flex-direction: column !important; gap: 12px !important; }
