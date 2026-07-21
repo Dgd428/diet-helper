@@ -636,13 +636,25 @@ body {
 
   /* ===== Search Bubble ===== */
   .ing-search-bubble {
-    bottom: 80px !important; left: 50% !important; transform: translateX(-50%) !important;
-    width: auto !important; max-width: 60vw !important;
+    bottom: 120px !important; left: 50% !important; transform: translateX(-50%) !important;
+    width: auto !important; max-width: 70vw !important;
     padding: 10px 18px !important; border-radius: 24px !important;
     position: fixed !important; background: var(--card) !important;
-    box-shadow: 0 4px 20px rgba(100,80,160,0.1) !important;
+    box-shadow: 0 4px 20px rgba(100,80,160,0.12) !important;
+    display: none !important; z-index: 160 !important;
   }
-  .ing-bubble-input { font-size: 15px !important; width: 120px !important; }
+  .ing-search-bubble.open { display: flex !important; }
+  .ing-bubble-input { font-size: 15px !important; width: 160px !important; }
+
+  /* Search icon FAB */
+  .search-fab {
+    position: fixed !important; bottom: 50px !important; right: 70px !important; z-index: 31 !important;
+    width: 44px !important; height: 44px !important; border-radius: 50% !important;
+    background: var(--card) !important; border: 0.5px solid var(--border) !important;
+    box-shadow: 0 4px 16px rgba(100,80,160,0.1) !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    font-size: 18px !important; cursor: pointer !important; color: var(--muted) !important;
+  }
 
   /* ===== FAB: Collapsible vertical stack ===== */
   .all-day-fab, .week-fab, .settings-fab, .cart-fab-mobile {
@@ -740,6 +752,8 @@ body {
 </button>
 
 <button class="cart-fab-mobile" onclick="closeFabMenu();openShoppingList()" title="采购清单">&#x1F6D2;</button>
+
+<button class="search-fab" onclick="toggleSearchBubble()" title="搜索食材">&#x1F50D;</button>
 
 <!-- Mobile FAB trigger -->
 <button class="fab-trigger" onclick="toggleFabMenu()" title="更多">+</button>
@@ -1791,6 +1805,27 @@ function closeFabMenu() {
   document.body.classList.remove('fab-menu-open');
   document.getElementById('fabOverlay').style.display = 'none';
 }
+
+// ===== Mobile search toggle =====
+function toggleSearchBubble() {
+  const bubble = document.getElementById('ingSearchBubble');
+  if (!bubble) return;
+  if (bubble.classList.contains('open')) {
+    bubble.classList.remove('open');
+  } else {
+    bubble.classList.add('open');
+    document.getElementById('ingBubbleInput').focus();
+  }
+}
+
+document.addEventListener('click', function(e) {
+  const bubble = document.getElementById('ingSearchBubble');
+  if (!bubble || !bubble.classList.contains('open')) return;
+  const searchFab = document.querySelector('.search-fab');
+  if (!bubble.contains(e.target) && (!searchFab || !searchFab.contains(e.target))) {
+    bubble.classList.remove('open');
+  }
+});
 
 function openSettings() {
   closeFabMenu();
