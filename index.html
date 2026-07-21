@@ -1291,6 +1291,9 @@ function renderMealsContent(content, period, todayMeals) {
   ];
 
   html += `<div class="meal-section">
+    <style>
+      @media(max-width:640px){.cards-row{grid-template-columns:1fr!important;gap:12px!important}.person-card{width:100%!important}}
+    </style>
     <div class="cards-row">`;
 
   for (const member of members) {
