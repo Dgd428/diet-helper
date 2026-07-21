@@ -1227,6 +1227,15 @@ function renderAll() {
   }
 
   renderMealsContent(content, period, todayMeals);
+  fixMobileLayout();
+}
+
+function fixMobileLayout() {
+  if (window.innerWidth > 640) return;
+  document.querySelectorAll('.cards-row').forEach(row => {
+    row.style.display = 'grid';
+    row.style.gridTemplateColumns = '1fr';
+  });
 }
 
 function renderMealsContent(content, period, todayMeals) {
