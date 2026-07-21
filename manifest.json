@@ -1,0 +1,17 @@
+{
+  "name": "饮食助手",
+  "short_name": "饮食助手",
+  "description": "减肥人群与家庭成员的饮食规划工具",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fbf7f3",
+  "theme_color": "#7c6fcf",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

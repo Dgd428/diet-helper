@@ -1,0 +1,134 @@
+{
+  "减脂": {
+    "早餐": {
+      "targetCal": [
+        280,
+        380
+      ],
+      "categories": [
+        {
+          "category": "主食",
+          "required": true
+        },
+        {
+          "category": "蛋白",
+          "required": true
+        },
+        {
+          "category": "蔬果",
+          "required": false
+        },
+        {
+          "category": "饮品",
+          "required": false
+        },
+        {
+          "category": "组合",
+          "required": false
+        }
+      ]
+    },
+    "午餐": {
+      "targetCal": [
+        380,
+        520
+      ],
+      "categories": [
+        {
+          "category": "主菜",
+          "required": true
+        },
+        {
+          "category": "配菜",
+          "required": true
+        },
+        {
+          "category": "主食",
+          "required": true
+        }
+      ]
+    },
+    "晚餐": {
+      "targetCal": [
+        200,
+        350
+      ],
+      "categories": [
+        {
+          "category": "主菜",
+          "required": true
+        },
+        {
+          "category": "配菜",
+          "required": false
+        }
+      ]
+    }
+  },
+  "营养": {
+    "早餐": {
+      "targetCal": [
+        380,
+        580
+      ],
+      "categories": [
+        {
+          "category": "主食",
+          "required": true
+        },
+        {
+          "category": "蛋白",
+          "required": false
+        },
+        {
+          "category": "饮品",
+          "required": false
+        },
+        {
+          "category": "蔬果",
+          "required": false
+        }
+      ]
+    },
+    "午餐": {
+      "targetCal": [
+        550,
+        750
+      ],
+      "categories": [
+        {
+          "category": "主菜",
+          "required": true
+        },
+        {
+          "category": "配菜",
+          "required": false
+        },
+        {
+          "category": "主食",
+          "required": true
+        }
+      ]
+    },
+    "晚餐": {
+      "targetCal": [
+        450,
+        650
+      ],
+      "categories": [
+        {
+          "category": "主菜",
+          "required": true
+        },
+        {
+          "category": "配菜",
+          "required": false
+        },
+        {
+          "category": "主食",
+          "required": true
+        }
+      ]
+    }
+  }
+}
